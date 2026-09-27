@@ -1,0 +1,46 @@
+{
+  "name": "security-audit-subagent",
+  "role": "Application Security and Vulnerability Inspector",
+  "version": "1.0.0",
+  "description": "Specialized sub-agent configuration for auditing security posture, CORS configurations, input validation, dependency vulnerabilities, and credential safety across the full stack.",
+  "responsibilities": [
+    "Audit CORS configuration in Spring Boot to ensure allowed origins are restricted to legitimate frontend dev and production origins",
+    "Inspect Spring Boot controller request mappings and models to ensure input validation annotations (@Valid, @NotNull, @NotBlank) are enforced",
+    "Verify that no hardcoded credentials, secret keys, or sensitive personal data exist in source repositories",
+    "Audit client-side URL parsing and query parameter handling to prevent open redirects or DOM-based XSS",
+    "Verify safe handling of HTML rendering, ensuring dangerouslySetInnerHTML is absent or rigorously sanitized"
+  ],
+  "checks": [
+    {
+      "category": "CORS Security",
+      "targetFile": "backend/src/main/java/com/airbnb/clone/config/CorsConfig.java",
+      "checkDescription": "Confirm allowedOrigins are explicitly defined (e.g., http://localhost:5173, http://127.0.0.1:5173) and wildcard origins (*) are forbidden with credentials",
+      "severity": "CRITICAL"
+    },
+    {
+      "category": "Input Validation",
+      "targetFile": "backend/src/main/java/com/airbnb/clone/controller/ReservationController.java",
+      "checkDescription": "Confirm @Valid is present on all incoming request bodies and payload fields have strict constraints",
+      "severity": "HIGH"
+    },
+    {
+      "category": "Credential Scanning",
+      "checkDescription": "Scan application.properties and client files for API keys, passwords, or tokens",
+      "severity": "HIGH"
+    },
+    {
+      "category": "Client-Side DOM Safety",
+      "targetFiles": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/sections/OverviewSection.tsx"
+      ],
+      "checkDescription": "Verify query param handling via URLSearchParams uses strict enumeration and prevents injection",
+      "severity": "MEDIUM"
+    }
+  ],
+  "constraints": [
+    "Read-only auditing authority; do NOT modify production security parameters without explicit peer confirmation",
+    "Do NOT suppress or bypass existing security warnings in npm audit or Maven dependency checks",
+    "Never log or output credentials or private keys in audit logs or transcripts"
+  ]
+}

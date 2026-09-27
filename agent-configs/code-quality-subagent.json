@@ -1,0 +1,51 @@
+{
+  "name": "code-quality-subagent",
+  "role": "Code Quality and Standards Inspector",
+  "version": "1.0.0",
+  "description": "Specialized sub-agent configuration for auditing code quality, TypeScript type safety, React component architecture, and CSS conventions across the codebase.",
+  "responsibilities": [
+    "Verify TypeScript strict type safety and eliminate any unused variables, parameters, or implicit any types",
+    "Ensure React best practices, including proper hook dependencies, unmount cleanup, and state colocation",
+    "Inspect component styling to confirm adherence to Tailwind CSS utility conventions and prevent unwanted arbitrary values",
+    "Verify that locked section geometry styles and calibrated layout paddings remain untouched",
+    "Ensure zero compile warnings or errors in frontend (tsc && vite build) and backend (mvn test)"
+  ],
+  "checks": [
+    {
+      "category": "TypeScript Compilation",
+      "command": "npm run build",
+      "workingDirectory": "frontend",
+      "expectedExitCode": 0,
+      "severity": "CRITICAL"
+    },
+    {
+      "category": "Backend Compilation & Tests",
+      "command": "mvn test",
+      "workingDirectory": "backend",
+      "expectedExitCode": 0,
+      "severity": "CRITICAL"
+    },
+    {
+      "category": "Locked Geometry Verification",
+      "targetFiles": [
+        "frontend/src/components/sections/AmenitiesSection.tsx",
+        "frontend/src/components/reservation/ReservationCard.tsx",
+        "frontend/src/components/sections/CalendarSection.tsx",
+        "frontend/src/components/sections/LocationSection.tsx",
+        "frontend/src/components/sections/NearbyStaysCarousel.tsx"
+      ],
+      "checkDescription": "Confirm locked padding and margin classes (e.g., pt-[26.4px] pb-8, gap-5, pt-8 pb-[50.8px], pt-12 pb-[45.8px], mb-[24.1px]) are strictly preserved",
+      "severity": "HIGH"
+    },
+    {
+      "category": "Dead Code and Unused Imports",
+      "checkDescription": "Verify no unused imports or variables remain in modified components",
+      "severity": "MEDIUM"
+    }
+  ],
+  "constraints": [
+    "Do NOT introduce new third-party dependencies without explicit authorization",
+    "Do NOT alter business logic or established UI geometry during quality audits",
+    "Maintain complete documentation integrity and preserve all existing comments and docstrings"
+  ]
+}

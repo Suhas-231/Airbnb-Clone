@@ -1,0 +1,522 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1360" width="2000" height="1360" style="background:#0f172a; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff385c" />
+      <stop offset="100%" stop-color="#e00b41" />
+    </linearGradient>
+    <linearGradient id="clientGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="gatewayGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#312e81" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <linearGradient id="serviceGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="kafkaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#831843" />
+      <stop offset="50%" stop-color="#9d174d" />
+      <stop offset="100%" stop-color="#831843" />
+    </linearGradient>
+    <linearGradient id="dataGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b" />
+      <stop offset="100%" stop-color="#022c22" />
+    </linearGradient>
+    <linearGradient id="obsGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Drop Shadow Filters -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+    <filter id="glowPink" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#ff385c" flood-opacity="0.5" />
+    </filter>
+
+    <!-- Markers -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowRose" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f43f5e" />
+    </marker>
+    <marker id="arrowEmerald" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399" />
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24" />
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#c084fc" />
+    </marker>
+  </defs>
+
+  <!-- ==================== HEADER BAR ==================== -->
+  <rect x="0" y="0" width="2000" height="90" fill="#1e293b" />
+  <rect x="0" y="86" width="2000" height="4" fill="url(#headerGrad)" />
+  
+  <!-- Logo Icon -->
+  <circle cx="50" cy="45" r="22" fill="#ff385c" />
+  <path d="M 50 30 C 44 30 39 35 39 42 C 39 50 47 57 50 60 C 53 57 61 50 61 42 C 61 35 56 30 50 30 Z M 50 46 C 47.8 46 46 44.2 46 42 C 46 39.8 47.8 38 50 38 C 52.2 38 54 39.8 54 42 C 54 44.2 52.2 46 50 46 Z" fill="#ffffff" />
+  
+  <text x="86" y="42" fill="#ffffff" font-size="24" font-weight="700" letter-spacing="-0.5">Production-Scale Vacation Rental Platform Architecture</text>
+  <text x="86" y="68" fill="#94a3b8" font-size="14">Target Architecture for High-Concurrency, Event-Driven, Multi-Region Vacation Rental Systems</text>
+
+  <!-- Scope Notice Badge -->
+  <rect x="1310" y="24" width="640" height="42" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1.5" />
+  <circle cx="1332" cy="45" r="5" fill="#38bdf8" />
+  <text x="1348" y="42" fill="#cbd5e1" font-size="12" font-weight="600">ARCHITECTURE SCOPE NOTICE</text>
+  <text x="1348" y="58" fill="#94a3b8" font-size="11">Production target architecture | Current implementation: React/Vite + Java 21 Spring Boot 3.3.4</text>
+
+  <!-- ==================== LAYER 1: CLIENT TIER ==================== -->
+  <g transform="translate(60, 115)">
+    <rect x="0" y="0" width="1880" height="135" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5" filter="url(#shadow)" />
+    <rect x="16" y="-12" width="150" height="24" rx="6" fill="#0284c7" />
+    <text x="26" y="4" fill="#ffffff" font-size="12" font-weight="700" letter-spacing="0.5">1. CLIENT TIER</text>
+
+    <!-- Web Client -->
+    <g transform="translate(25, 25)">
+      <rect x="0" y="0" width="260" height="85" rx="10" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+      <circle cx="28" cy="28" r="14" fill="#0369a1" />
+      <text x="28" y="33" text-anchor="middle" fill="#ffffff" font-size="14">🌐</text>
+      <text x="52" y="27" fill="#f8fafc" font-size="15" font-weight="600">Web Client</text>
+      <text x="52" y="44" fill="#38bdf8" font-size="12">React 18 · Vite · Tailwind</text>
+      <text x="16" y="70" fill="#94a3b8" font-size="11">SPA · Photo Tour · Sticky Nav · Modals</text>
+    </g>
+
+    <!-- iOS Client -->
+    <g transform="translate(305, 25)">
+      <rect x="0" y="0" width="240" height="85" rx="10" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+      <circle cx="28" cy="28" r="14" fill="#0369a1" />
+      <text x="28" y="33" text-anchor="middle" fill="#ffffff" font-size="14">📱</text>
+      <text x="52" y="27" fill="#f8fafc" font-size="15" font-weight="600">iOS Client</text>
+      <text x="52" y="44" fill="#38bdf8" font-size="12">Native Swift · SwiftUI</text>
+      <text x="16" y="70" fill="#94a3b8" font-size="11">Offline caching · Apple Pay · Push</text>
+    </g>
+
+    <!-- Android Client -->
+    <g transform="translate(565, 25)">
+      <rect x="0" y="0" width="240" height="85" rx="10" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+      <circle cx="28" cy="28" r="14" fill="#0369a1" />
+      <text x="28" y="33" text-anchor="middle" fill="#ffffff" font-size="14">🤖</text>
+      <text x="52" y="27" fill="#f8fafc" font-size="15" font-weight="600">Android Client</text>
+      <text x="52" y="44" fill="#38bdf8" font-size="12">Kotlin · Jetpack Compose</text>
+      <text x="16" y="70" fill="#94a3b8" font-size="11">Room DB · Google Pay · FCM</text>
+    </g>
+
+    <!-- Edge CDN & WAF -->
+    <g transform="translate(835, 25)">
+      <rect x="0" y="0" width="1020" height="85" rx="10" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5" />
+      <circle cx="30" cy="28" r="14" fill="#b45309" />
+      <text x="30" y="34" text-anchor="middle" fill="#ffffff" font-size="14">⚡</text>
+      <text x="54" y="28" fill="#f8fafc" font-size="16" font-weight="600">Edge CDN &amp; Web Application Firewall (CloudFront / Cloudflare)</text>
+      <text x="54" y="47" fill="#fbbf24" font-size="12">Global Anycast Network · 300+ Edge Points of Presence (PoPs)</text>
+      
+      <!-- Sub badges inside CDN -->
+      <g transform="translate(20, 56)">
+        <rect x="0" y="0" width="220" height="20" rx="4" fill="#1e293b" />
+        <text x="110" y="14" text-anchor="middle" fill="#cbd5e1" font-size="10">Static Asset &amp; Bundle Caching</text>
+        <rect x="235" y="0" width="220" height="20" rx="4" fill="#1e293b" />
+        <text x="345" y="14" text-anchor="middle" fill="#cbd5e1" font-size="10">High-Res Photo CDN Edge Delivery</text>
+        <rect x="470" y="0" width="220" height="20" rx="4" fill="#1e293b" />
+        <text x="580" y="14" text-anchor="middle" fill="#cbd5e1" font-size="10">TLS 1.3 &amp; DDoS Layer 7 Shield</text>
+        <rect x="705" y="0" width="270" height="20" rx="4" fill="#1e293b" />
+        <text x="840" y="14" text-anchor="middle" fill="#cbd5e1" font-size="10">HTTP/3 · Brotli &amp; WebP Auto Compression</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ==================== LAYER 2: API GATEWAY & BFF ==================== -->
+  <g transform="translate(60, 275)">
+    <rect x="0" y="0" width="1880" height="120" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5" filter="url(#shadow)" />
+    <rect x="16" y="-12" width="180" height="24" rx="6" fill="#4f46e5" />
+    <text x="26" y="4" fill="#ffffff" font-size="12" font-weight="700" letter-spacing="0.5">2. API GATEWAY &amp; BFF</text>
+
+    <!-- API Gateway / Reverse Proxy -->
+    <g transform="translate(25, 25)">
+      <rect x="0" y="0" width="430" height="75" rx="8" fill="#0f172a" stroke="#6366f1" stroke-width="1.5" />
+      <text x="18" y="26" fill="#f8fafc" font-size="15" font-weight="600">API Gateway &amp; Reverse Proxy</text>
+      <text x="18" y="45" fill="#a5b4fc" font-size="12">Envoy / Spring Cloud Gateway / Kong</text>
+      <text x="18" y="64" fill="#94a3b8" font-size="11">Path-based routing · SSL offloading · Request tracing injection</text>
+    </g>
+
+    <!-- Rate Limiting -->
+    <g transform="translate(480, 25)">
+      <rect x="0" y="0" width="420" height="75" rx="8" fill="#0f172a" stroke="#6366f1" stroke-width="1.5" />
+      <text x="18" y="26" fill="#f8fafc" font-size="15" font-weight="600">Rate Limiter &amp; DoS Protection</text>
+      <text x="18" y="45" fill="#a5b4fc" font-size="12">Redis Distributed Token Bucket Algorithm</text>
+      <text x="18" y="64" fill="#94a3b8" font-size="11">Tiered quotas: IP-level, User-level, Route-level limits</text>
+    </g>
+
+    <!-- Auth & JWT -->
+    <g transform="translate(925, 25)">
+      <rect x="0" y="0" width="460" height="75" rx="8" fill="#0f172a" stroke="#6366f1" stroke-width="1.5" />
+      <text x="18" y="26" fill="#f8fafc" font-size="15" font-weight="600">Authentication &amp; Authorization</text>
+      <text x="18" y="45" fill="#a5b4fc" font-size="12">OAuth 2.0 / OpenID Connect / JWT Verification</text>
+      <text x="18" y="64" fill="#94a3b8" font-size="11">Stateless cryptographic JWT validation · Role-Based Access Control</text>
+    </g>
+
+    <!-- Backend for Frontend (BFF) -->
+    <g transform="translate(1410, 25)">
+      <rect x="0" y="0" width="445" height="75" rx="8" fill="#0f172a" stroke="#6366f1" stroke-width="1.5" />
+      <text x="18" y="26" fill="#f8fafc" font-size="15" font-weight="600">BFF &amp; Response Aggregator</text>
+      <text x="18" y="45" fill="#a5b4fc" font-size="12">GraphQL / REST Fan-out Orchestration</text>
+      <text x="18" y="64" fill="#94a3b8" font-size="11">Aggregates listing, host, ratings &amp; quotes in single client roundtrip</text>
+    </g>
+  </g>
+
+  <!-- ==================== LAYER 3: CORE MICROSERVICES ==================== -->
+  <g transform="translate(60, 420)">
+    <rect x="0" y="0" width="1880" height="230" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5" filter="url(#shadow)" />
+    <rect x="16" y="-12" width="220" height="24" rx="6" fill="#7c3aed" />
+    <text x="26" y="4" fill="#ffffff" font-size="12" font-weight="700" letter-spacing="0.5">3. CORE MICROSERVICES</text>
+    <text x="250" y="4" fill="#a78bfa" font-size="11" font-weight="500">Containerized in Docker · Orchestrated via Kubernetes (Amazon EKS) · Horizontal Pod Autoscaled</text>
+
+    <!-- 1. Listing Service -->
+    <g transform="translate(25, 25)">
+      <rect x="0" y="0" width="290" height="185" rx="10" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5" />
+      <circle cx="28" cy="28" r="14" fill="#6d28d9" />
+      <text x="28" y="34" text-anchor="middle" fill="#ffffff" font-size="13">🏠</text>
+      <text x="50" y="26" fill="#ffffff" font-size="15" font-weight="600">Listing Service</text>
+      <text x="50" y="42" fill="#c4b5fd" font-size="11">Spring Boot / Java 21</text>
+      
+      <line x1="15" y1="56" x2="275" y2="56" stroke="#334155" stroke-width="1" />
+      <text x="15" y="76" fill="#e2e8f0" font-size="11" font-weight="500">• Title, overview, specs &amp; house rules</text>
+      <text x="15" y="96" fill="#e2e8f0" font-size="11" font-weight="500">• 36+ categorized amenities</text>
+      <text x="15" y="116" fill="#e2e8f0" font-size="11" font-weight="500">• Bedroom &amp; sleeping layouts</text>
+      <text x="15" y="136" fill="#e2e8f0" font-size="11" font-weight="500">• Host profile &amp; superhost badges</text>
+      <text x="15" y="156" fill="#e2e8f0" font-size="11" font-weight="500">• Photo tour metadata (21+ items)</text>
+      <text x="15" y="174" fill="#38bdf8" font-size="10">API: /api/listings/{id}</text>
+    </g>
+
+    <!-- 2. Search Service -->
+    <g transform="translate(335, 25)">
+      <rect x="0" y="0" width="290" height="185" rx="10" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5" />
+      <circle cx="28" cy="28" r="14" fill="#6d28d9" />
+      <text x="28" y="34" text-anchor="middle" fill="#ffffff" font-size="13">🔍</text>
+      <text x="50" y="26" fill="#ffffff" font-size="15" font-weight="600">Search Service</text>
+      <text x="50" y="42" fill="#c4b5fd" font-size="11">Spring Boot / Java 21</text>
+      
+      <line x1="15" y1="56" x2="275" y2="56" stroke="#334155" stroke-width="1" />
+      <text x="15" y="76" fill="#e2e8f0" font-size="11" font-weight="500">• Geo-spatial radius queries</text>
+      <text x="15" y="96" fill="#e2e8f0" font-size="11" font-weight="500">• Price filter facets &amp; guest count</text>
+      <text x="15" y="116" fill="#e2e8f0" font-size="11" font-weight="500">• Date availability pre-filtering</text>
+      <text x="15" y="136" fill="#e2e8f0" font-size="11" font-weight="500">• Nearby stays carousel algorithm</text>
+      <text x="15" y="156" fill="#e2e8f0" font-size="11" font-weight="500">• Synced via Kafka search indexers</text>
+      <text x="15" y="174" fill="#38bdf8" font-size="10">API: /api/listings/nearby</text>
+    </g>
+
+    <!-- 3. Booking & Reservation Service -->
+    <g transform="translate(645, 25)">
+      <rect x="0" y="0" width="310" height="185" rx="10" fill="#0f172a" stroke="#ec4899" stroke-width="2" filter="url(#glowPink)" />
+      <circle cx="28" cy="28" r="14" fill="#be185d" />
+      <text x="28" y="34" text-anchor="middle" fill="#ffffff" font-size="13">📅</text>
+      <text x="50" y="26" fill="#ffffff" font-size="15" font-weight="700">Booking Service</text>
+      <text x="50" y="42" fill="#f472b6" font-size="11">Core Transactional Engine</text>
+      
+      <line x1="15" y1="56" x2="295" y2="56" stroke="#334155" stroke-width="1" />
+      <text x="15" y="76" fill="#e2e8f0" font-size="11" font-weight="500">• Dynamic quote &amp; discount engine</text>
+      <text x="15" y="96" fill="#e2e8f0" font-size="11" font-weight="500">• Distributed Redis calendar lock</text>
+      <text x="15" y="116" fill="#e2e8f0" font-size="11" font-weight="500">• Reservation lifecycle state machine</text>
+      <text x="15" y="136" fill="#e2e8f0" font-size="11" font-weight="500">• Free cancellation window tracking</text>
+      <text x="15" y="156" fill="#e2e8f0" font-size="11" font-weight="500">• Emits booking.created to Kafka</text>
+      <text x="15" y="174" fill="#38bdf8" font-size="10">API: /api/reservations/quote</text>
+    </g>
+
+    <!-- 4. Review & Rating Service -->
+    <g transform="translate(975, 25)">
+      <rect x="0" y="0" width="280" height="185" rx="10" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5" />
+      <circle cx="28" cy="28" r="14" fill="#6d28d9" />
+      <text x="28" y="34" text-anchor="middle" fill="#ffffff" font-size="13">⭐</text>
+      <text x="50" y="26" fill="#ffffff" font-size="15" font-weight="600">Review Service</text>
+      <text x="50" y="42" fill="#c4b5fd" font-size="11">Spring Boot / Java 21</text>
+      
+      <line x1="15" y1="56" x2="265" y2="56" stroke="#334155" stroke-width="1" />
+      <text x="15" y="76" fill="#e2e8f0" font-size="11" font-weight="500">• 4.95 overall rating calculation</text>
+      <text x="15" y="96" fill="#e2e8f0" font-size="11" font-weight="500">• 7-dimension score breakdown</text>
+      <text x="15" y="116" fill="#e2e8f0" font-size="11" font-weight="500">• Guest reviews pagination modal</text>
+      <text x="15" y="136" fill="#e2e8f0" font-size="11" font-weight="500">• Guest Favourite badge qualifiers</text>
+      <text x="15" y="156" fill="#e2e8f0" font-size="11" font-weight="500">• Verified stay review moderation</text>
+      <text x="15" y="174" fill="#38bdf8" font-size="10">API: /api/listings/{id}/reviews</text>
+    </g>
+
+    <!-- 5. Payment Service -->
+    <g transform="translate(1275, 25)">
+      <rect x="0" y="0" width="280" height="185" rx="10" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5" />
+      <circle cx="28" cy="28" r="14" fill="#6d28d9" />
+      <text x="28" y="34" text-anchor="middle" fill="#ffffff" font-size="13">💳</text>
+      <text x="50" y="26" fill="#ffffff" font-size="15" font-weight="600">Payment Service</text>
+      <text x="50" y="42" fill="#c4b5fd" font-size="11">PCI-DSS Compliant</text>
+      
+      <line x1="15" y1="56" x2="265" y2="56" stroke="#334155" stroke-width="1" />
+      <text x="15" y="76" fill="#e2e8f0" font-size="11" font-weight="500">• Stripe / Razorpay gateway</text>
+      <text x="15" y="96" fill="#e2e8f0" font-size="11" font-weight="500">• Pre-authorization ("Not charged")</text>
+      <text x="15" y="116" fill="#e2e8f0" font-size="11" font-weight="500">• Webhook idempotency keys</text>
+      <text x="15" y="136" fill="#e2e8f0" font-size="11" font-weight="500">• Multi-currency settlement (INR/USD)</text>
+      <text x="15" y="156" fill="#e2e8f0" font-size="11" font-weight="500">• Automated refund on cancellation</text>
+      <text x="15" y="174" fill="#38bdf8" font-size="10">API: /api/payments/*</text>
+    </g>
+
+    <!-- 6. Notification Service -->
+    <g transform="translate(1575, 25)">
+      <rect x="0" y="0" width="280" height="185" rx="10" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5" />
+      <circle cx="28" cy="28" r="14" fill="#6d28d9" />
+      <text x="28" y="34" text-anchor="middle" fill="#ffffff" font-size="13">🔔</text>
+      <text x="50" y="26" fill="#ffffff" font-size="15" font-weight="600">Notification Service</text>
+      <text x="50" y="42" fill="#c4b5fd" font-size="11">Asynchronous Dispatcher</text>
+      
+      <line x1="15" y1="56" x2="265" y2="56" stroke="#334155" stroke-width="1" />
+      <text x="15" y="76" fill="#e2e8f0" font-size="11" font-weight="500">• Real-time WebSockets</text>
+      <text x="15" y="96" fill="#e2e8f0" font-size="11" font-weight="500">• Transactional email (SendGrid)</text>
+      <text x="15" y="116" fill="#e2e8f0" font-size="11" font-weight="500">• SMS updates (Twilio)</text>
+      <text x="15" y="136" fill="#e2e8f0" font-size="11" font-weight="500">• Push notifications (APNs / FCM)</text>
+      <text x="15" y="156" fill="#e2e8f0" font-size="11" font-weight="500">• Consumes Kafka notification topic</text>
+      <text x="15" y="174" fill="#38bdf8" font-size="10">Internal Consumer</text>
+    </g>
+  </g>
+
+  <!-- ==================== LAYER 4: EVENT STREAMING (KAFKA) ==================== -->
+  <g transform="translate(60, 675)">
+    <rect x="0" y="0" width="1880" height="105" rx="14" fill="url(#kafkaGrad)" stroke="#db2777" stroke-width="1.5" filter="url(#shadow)" />
+    <rect x="16" y="-12" width="280" height="24" rx="6" fill="#be185d" />
+    <text x="26" y="4" fill="#ffffff" font-size="12" font-weight="700" letter-spacing="0.5">4. EVENT STREAMING (APACHE KAFKA)</text>
+
+    <!-- Kafka Topics Representation -->
+    <g transform="translate(25, 20)">
+      <!-- Topic 1 -->
+      <g transform="translate(0, 5)">
+        <rect x="0" y="0" width="340" height="60" rx="8" fill="#500724" stroke="#f472b6" stroke-width="1" />
+        <text x="15" y="24" fill="#fdf2f8" font-size="13" font-weight="600">topic: booking.created</text>
+        <text x="15" y="44" fill="#fbcfe8" font-size="10">Triggers payments, calendar sync, host email</text>
+      </g>
+      <!-- Topic 2 -->
+      <g transform="translate(365, 5)">
+        <rect x="0" y="0" width="340" height="60" rx="8" fill="#500724" stroke="#f472b6" stroke-width="1" />
+        <text x="15" y="24" fill="#fdf2f8" font-size="13" font-weight="600">topic: search.indexing.sync</text>
+        <text x="15" y="44" fill="#fbcfe8" font-size="10">Syncs modified listing data to Elasticsearch</text>
+      </g>
+      <!-- Topic 3 -->
+      <g transform="translate(730, 5)">
+        <rect x="0" y="0" width="350" height="60" rx="8" fill="#500724" stroke="#f472b6" stroke-width="1" />
+        <text x="15" y="24" fill="#fdf2f8" font-size="13" font-weight="600">topic: notification.dispatch</text>
+        <text x="15" y="44" fill="#fbcfe8" font-size="10">Dispatches push, SMS &amp; booking receipts</text>
+      </g>
+      <!-- Topic 4 -->
+      <g transform="translate(1105, 5)">
+        <rect x="0" y="0" width="350" height="60" rx="8" fill="#500724" stroke="#f472b6" stroke-width="1" />
+        <text x="15" y="24" fill="#fdf2f8" font-size="13" font-weight="600">topic: payment.events</text>
+        <text x="15" y="44" fill="#fbcfe8" font-size="10">Settlement, refund on cancel, ledger updates</text>
+      </g>
+      <!-- Kafka Cluster Features -->
+      <g transform="translate(1480, 5)">
+        <rect x="0" y="0" width="345" height="60" rx="8" fill="#500724" stroke="#f472b6" stroke-width="1" />
+        <text x="15" y="24" fill="#fdf2f8" font-size="13" font-weight="600">Enterprise Event Guarantees</text>
+        <text x="15" y="44" fill="#fbcfe8" font-size="10">Schema Registry · At-Least-Once Delivery · DLQ</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ==================== LAYER 5: DATA & STORAGE TIER ==================== -->
+  <g transform="translate(60, 805)">
+    <rect x="0" y="0" width="1880" height="205" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5" filter="url(#shadow)" />
+    <rect x="16" y="-12" width="220" height="24" rx="6" fill="#059669" />
+    <text x="26" y="4" fill="#ffffff" font-size="12" font-weight="700" letter-spacing="0.5">5. DATA &amp; STORAGE TIER</text>
+
+    <!-- PostgreSQL Cluster -->
+    <g transform="translate(25, 25)">
+      <rect x="0" y="0" width="440" height="160" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="1.5" />
+      <circle cx="28" cy="28" r="14" fill="#047857" />
+      <text x="28" y="34" text-anchor="middle" fill="#ffffff" font-size="13">🐘</text>
+      <text x="50" y="26" fill="#ffffff" font-size="15" font-weight="600">PostgreSQL Primary + Read Replicas</text>
+      <text x="50" y="42" fill="#6ee7b7" font-size="11">ACID Relational Core (AWS Aurora PostgreSQL)</text>
+      
+      <line x1="15" y1="54" x2="425" y2="54" stroke="#334155" stroke-width="1" />
+      <text x="15" y="74" fill="#cbd5e1" font-size="11">• Tables: listings, hosts, rooms, amenities, bookings, reviews</text>
+      <text x="15" y="94" fill="#cbd5e1" font-size="11">• Multi-AZ synchronous primary replication</text>
+      <text x="15" y="114" fill="#cbd5e1" font-size="11">• Read-replicas for heavy listing and review read traffic</text>
+      <text x="15" y="134" fill="#cbd5e1" font-size="11">• Strict foreign keys, composite indexes, JSONB for amenities</text>
+      <text x="15" y="152" fill="#34d399" font-size="10">Connection pooling: HikariCP / PgBouncer</text>
+    </g>
+
+    <!-- Redis Distributed Cache -->
+    <g transform="translate(490, 25)">
+      <rect x="0" y="0" width="440" height="160" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="1.5" />
+      <circle cx="28" cy="28" r="14" fill="#047857" />
+      <text x="28" y="34" text-anchor="middle" fill="#ffffff" font-size="13">⚡</text>
+      <text x="50" y="26" fill="#ffffff" font-size="15" font-weight="600">Redis In-Memory Cluster</text>
+      <text x="50" y="42" fill="#6ee7b7" font-size="11">Sub-Millisecond Cache &amp; Coordination</text>
+      
+      <line x1="15" y1="54" x2="425" y2="54" stroke="#334155" stroke-width="1" />
+      <text x="15" y="74" fill="#cbd5e1" font-size="11">• Distributed locks for concurrent date booking (Redlock)</text>
+      <text x="15" y="94" fill="#cbd5e1" font-size="11">• Hot listing cache (TTL: 15 min with stale-while-revalidate)</text>
+      <text x="15" y="114" fill="#cbd5e1" font-size="11">• Rate limiting sliding window counters</text>
+      <text x="15" y="134" fill="#cbd5e1" font-size="11">• User session store &amp; sticky auth cache</text>
+      <text x="15" y="152" fill="#34d399" font-size="10">Cluster Mode enabled with automatic failover</text>
+    </g>
+
+    <!-- Elasticsearch -->
+    <g transform="translate(955, 25)">
+      <rect x="0" y="0" width="440" height="160" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="1.5" />
+      <circle cx="28" cy="28" r="14" fill="#047857" />
+      <text x="28" y="34" text-anchor="middle" fill="#ffffff" font-size="13">🔎</text>
+      <text x="50" y="26" fill="#ffffff" font-size="15" font-weight="600">Elasticsearch Search Cluster</text>
+      <text x="50" y="42" fill="#6ee7b7" font-size="11">OpenSearch / Elasticsearch 8.x</text>
+      
+      <line x1="15" y1="54" x2="425" y2="54" stroke="#334155" stroke-width="1" />
+      <text x="15" y="74" fill="#cbd5e1" font-size="11">• Geo-distance shapes &amp; bounding box filtering (Goa, Candolim)</text>
+      <text x="15" y="94" fill="#cbd5e1" font-size="11">• Fast faceted aggregations (price ranges, guest counts)</text>
+      <text x="15" y="114" fill="#cbd5e1" font-size="11">• Fuzzy text matching across descriptions &amp; reviews</text>
+      <text x="15" y="134" fill="#cbd5e1" font-size="11">• Near-real-time index updates synced via Kafka consumers</text>
+      <text x="15" y="152" fill="#34d399" font-size="10">Dedicated Master &amp; Data node topology</text>
+    </g>
+
+    <!-- Amazon S3 Object Storage -->
+    <g transform="translate(1420, 25)">
+      <rect x="0" y="0" width="435" height="160" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="1.5" />
+      <circle cx="28" cy="28" r="14" fill="#047857" />
+      <text x="28" y="34" text-anchor="middle" fill="#ffffff" font-size="13">🪣</text>
+      <text x="50" y="26" fill="#ffffff" font-size="15" font-weight="600">Amazon S3 Object Storage</text>
+      <text x="50" y="42" fill="#6ee7b7" font-size="11">Cloud-Native Media Repository</text>
+      
+      <line x1="15" y1="54" x2="420" y2="54" stroke="#334155" stroke-width="1" />
+      <text x="15" y="74" fill="#cbd5e1" font-size="11">• Original high-resolution property photography</text>
+      <text x="15" y="94" fill="#cbd5e1" font-size="11">• Auto-resized variants: hero (1200px), tour (800px), thumbs (400px)</text>
+      <text x="15" y="114" fill="#cbd5e1" font-size="11">• Pre-signed URL uploads for verified hosts</text>
+      <text x="15" y="134" fill="#cbd5e1" font-size="11">• Direct origin integration to Edge CDN (CloudFront)</text>
+      <text x="15" y="152" fill="#34d399" font-size="10">Durability: 99.999999999% (11 9s) · Encrypted at rest (KMS)</text>
+    </g>
+  </g>
+
+  <!-- ==================== LAYER 6: DEPLOYMENT & OBSERVABILITY ==================== -->
+  <g transform="translate(60, 1035)">
+    <rect x="0" y="0" width="1880" height="150" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5" filter="url(#shadow)" />
+    <rect x="16" y="-12" width="280" height="24" rx="6" fill="#475569" />
+    <text x="26" y="4" fill="#ffffff" font-size="12" font-weight="700" letter-spacing="0.5">6. DEPLOYMENT &amp; OBSERVABILITY</text>
+
+    <!-- Kubernetes / EKS -->
+    <g transform="translate(25, 25)">
+      <rect x="0" y="0" width="435" height="105" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1.5" />
+      <text x="18" y="28" fill="#f8fafc" font-size="15" font-weight="600">Kubernetes (Amazon EKS) &amp; Docker</text>
+      <text x="18" y="48" fill="#94a3b8" font-size="12">Multi-AZ EKS cluster · Docker container images</text>
+      <text x="18" y="68" fill="#cbd5e1" font-size="11">• Horizontal Pod Autoscaling (HPA) driven by CPU/custom metrics</text>
+      <text x="18" y="88" fill="#cbd5e1" font-size="11">• Rolling blue-green &amp; canary deployment zero-downtime updates</text>
+    </g>
+
+    <!-- CI/CD -->
+    <g transform="translate(485, 25)">
+      <rect x="0" y="0" width="435" height="105" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1.5" />
+      <text x="18" y="28" fill="#f8fafc" font-size="15" font-weight="600">CI/CD Pipeline (GitHub Actions)</text>
+      <text x="18" y="48" fill="#94a3b8" font-size="12">Automated Build, Test, Security &amp; Deploy</text>
+      <text x="18" y="68" fill="#cbd5e1" font-size="11">• Automated Maven compile &amp; JUnit test execution</text>
+      <text x="18" y="88" fill="#cbd5e1" font-size="11">• TypeScript build check &amp; container image vulnerability scan</text>
+    </g>
+
+    <!-- OpenTelemetry -->
+    <g transform="translate(945, 25)">
+      <rect x="0" y="0" width="445" height="105" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1.5" />
+      <text x="18" y="28" fill="#f8fafc" font-size="15" font-weight="600">OpenTelemetry Collector</text>
+      <text x="18" y="48" fill="#94a3b8" font-size="12">Distributed Tracing &amp; Telemetry Standard</text>
+      <text x="18" y="68" fill="#cbd5e1" font-size="11">• Correlates request trace IDs from client to microservices to DB</text>
+      <text x="18" y="88" fill="#cbd5e1" font-size="11">• Exports standardized spans and metrics to Jaeger &amp; Prometheus</text>
+    </g>
+
+    <!-- Prometheus & Grafana -->
+    <g transform="translate(1415, 25)">
+      <rect x="0" y="0" width="440" height="105" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1.5" />
+      <text x="18" y="28" fill="#f8fafc" font-size="15" font-weight="600">Prometheus &amp; Grafana</text>
+      <text x="18" y="48" fill="#94a3b8" font-size="12">Metrics Engine &amp; Real-Time Operational Dashboards</text>
+      <text x="18" y="68" fill="#cbd5e1" font-size="11">• P95/P99 latency tracking, JVM memory &amp; HTTP 5xx alert rules</text>
+      <text x="18" y="88" fill="#cbd5e1" font-size="11">• Grafana dashboards for booking throughput &amp; cache hit rates</text>
+    </g>
+  </g>
+
+  <!-- ==================== FLOW CONNECTORS & ARROWS ==================== -->
+  
+  <!-- Flow 1: Clients to CDN -->
+  <path d="M 500 200 L 890 200" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrow)" />
+  <text x="695" y="193" fill="#38bdf8" font-size="11" text-anchor="middle" font-weight="600">HTTPS / Static &amp; Media</text>
+
+  <!-- Flow 2: Clients to API Gateway -->
+  <path d="M 200 250 L 200 300" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrow)" />
+  <path d="M 430 250 L 430 300" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M 680 250 L 680 300" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="280" y="280" fill="#38bdf8" font-size="11" font-weight="600">API Requests (REST / JSON)</text>
+
+  <!-- Flow 3: API Gateway to Services -->
+  <path d="M 230 395 L 230 445" stroke="#818cf8" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M 480 395 L 480 445" stroke="#818cf8" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M 800 395 L 800 445" stroke="#ec4899" stroke-width="2.5" marker-end="url(#arrowRose)" />
+  <path d="M 1115 395 L 1115 445" stroke="#818cf8" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M 1415 395 L 1415 445" stroke="#818cf8" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="960" y="415" fill="#c084fc" font-size="11" text-anchor="middle" font-weight="600">Authenticated Internal Routing (mTLS / gRPC)</text>
+
+  <!-- Flow 4: Booking Service to Kafka -->
+  <path d="M 800 650 L 800 695" stroke="#f43f5e" stroke-width="2.5" marker-end="url(#arrowRose)" />
+  <text x="815" y="675" fill="#f43f5e" font-size="11" font-weight="600">Publish: booking.created</text>
+
+  <!-- Flow 5: Kafka to Notification & Search -->
+  <path d="M 1715 695 L 1715 650" stroke="#f43f5e" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrowRose)" />
+  <text x="1725" y="675" fill="#f43f5e" font-size="11" font-weight="600">Consume</text>
+  <path d="M 480 695 L 480 650" stroke="#f43f5e" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrowRose)" />
+  <text x="490" y="675" fill="#f43f5e" font-size="11" font-weight="600">Consume</text>
+
+  <!-- Flow 6: Services to Data Stores -->
+  <!-- Listing to Postgres & Redis -->
+  <path d="M 200 650 L 200 830" stroke="#34d399" stroke-width="2" marker-end="url(#arrowEmerald)" />
+  <path d="M 280 650 L 600 830" stroke="#34d399" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrowEmerald)" />
+  <!-- Search to Elasticsearch -->
+  <path d="M 550 650 L 1100 830" stroke="#34d399" stroke-width="2" marker-end="url(#arrowEmerald)" />
+  <!-- Booking to Postgres & Redis Lock -->
+  <path d="M 750 650 L 350 830" stroke="#34d399" stroke-width="2" marker-end="url(#arrowEmerald)" />
+  <path d="M 850 650 L 750 830" stroke="#34d399" stroke-width="2" marker-end="url(#arrowEmerald)" />
+  <text x="560" y="795" fill="#34d399" font-size="11" font-weight="600">PostgreSQL ACID Reads/Writes &amp; Redis Distributed Lock</text>
+
+  <!-- Flow 7: S3 to CDN (Media Delivery) -->
+  <path d="M 1635 830 C 1750 800 1780 400 1600 250" stroke="#fbbf24" stroke-width="2.5" stroke-dasharray="5,5" fill="none" marker-end="url(#arrowAmber)" />
+  <text x="1750" y="550" fill="#fbbf24" font-size="12" font-weight="600" text-anchor="middle">Photo Assets Origin Sync</text>
+  <text x="1750" y="568" fill="#fbbf24" font-size="10" text-anchor="middle">(S3 → CloudFront Origin)</text>
+
+  <!-- Flow 8: Observability Telemetry Lines -->
+  <path d="M 1000 650 C 1000 750 1150 950 1150 1060" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow)" />
+  <text x="1080" y="750" fill="#94a3b8" font-size="10">Telemetry: Traces &amp; Metrics</text>
+
+  <!-- ==================== LEGEND BAR ==================== -->
+  <g transform="translate(60, 1205)">
+    <rect x="0" y="0" width="1880" height="50" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="25" y="30" fill="#ffffff" font-size="12" font-weight="700">ARCHITECTURE LEGEND:</text>
+    
+    <!-- Legend item 1 -->
+    <line x1="180" y1="26" x2="220" y2="26" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrow)" />
+    <text x="230" y="30" fill="#cbd5e1" font-size="11">Synchronous REST / JSON</text>
+
+    <!-- Legend item 2 -->
+    <line x1="420" y1="26" x2="460" y2="26" stroke="#818cf8" stroke-width="2" marker-end="url(#arrow)" />
+    <text x="470" y="30" fill="#cbd5e1" font-size="11">Internal Gateway / mTLS Routing</text>
+
+    <!-- Legend item 3 -->
+    <line x1="710" y1="26" x2="750" y2="26" stroke="#f43f5e" stroke-width="2.5" marker-end="url(#arrowRose)" />
+    <text x="760" y="30" fill="#cbd5e1" font-size="11">Async Event Streaming (Kafka Pub/Sub)</text>
+
+    <!-- Legend item 4 -->
+    <line x1="1040" y1="26" x2="1080" y2="26" stroke="#34d399" stroke-width="2" marker-end="url(#arrowEmerald)" />
+    <text x="1090" y="30" fill="#cbd5e1" font-size="11">Transactional &amp; Cache Data Persistence</text>
+
+    <!-- Legend item 5 -->
+    <line x1="1370" y1="26" x2="1410" y2="26" stroke="#fbbf24" stroke-width="2.5" stroke-dasharray="4,4" marker-end="url(#arrowAmber)" />
+    <text x="1420" y="30" fill="#cbd5e1" font-size="11">S3 to CDN Photo Asset Delivery Flow</text>
+
+    <!-- Legend item 6 -->
+    <line x1="1680" y1="26" x2="1720" y2="26" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrow)" />
+    <text x="1730" y="30" fill="#cbd5e1" font-size="11">OpenTelemetry Spans &amp; Metrics</text>
+  </g>
+
+  <!-- ==================== FOOTER ==================== -->
+  <text x="60" y="1285" fill="#64748b" font-size="11">Powerlabs Vacation Rental Platform · Production Target Architecture · Certified Reference Model</text>
+  <text x="1940" y="1285" text-anchor="end" fill="#64748b" font-size="11">Designed for High Availability (99.99%) · Low Latency (P95 &lt; 150ms) · Global Scalability</text>
+</svg>
