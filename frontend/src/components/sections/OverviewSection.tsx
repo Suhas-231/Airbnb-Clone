@@ -25,7 +25,6 @@ export const OverviewSection: React.FC<OverviewSectionProps> = ({
   rating = 4.95,
   totalReviews = 19,
   reviewsCount,
-  description,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const displayReviews = reviewsCount !== undefined ? reviewsCount : totalReviews;

@@ -1,6 +1,7 @@
+/// <reference types="vite/client" />
 import { Listing, NearbyStay, PhotoTourResponse, ReservationQuoteRequest, ReservationQuoteResponse, ReviewResponse } from '../types/listing';
 
-const API_BASE_URL = 'http://127.0.0.1:8081/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8081/api';
 
 async function fetchFromApi<T>(endpoint: string): Promise<T> {
   const url = `${API_BASE_URL}${endpoint}`;
